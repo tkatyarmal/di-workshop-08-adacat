@@ -81,12 +81,20 @@ describe('AdaCat', function () {
       //checks if the 3rd element shows the correct line
     })
 
+    it('tells you the tiredness level', function () {
+      var myCat = new AdaCat('JB', 'Tejas')
+      var result = myCat.getDescription()
+      var lines = result.split('\n')    //splits the string into new line and truns into elements of an array
+      expect(lines[4]).to.equal('their tiredness is 0/15.')
+      //checks if the 4th element shows the correct line
+    })
+
     it('tells you if the cat is awake', function () {
       var myCat = new AdaCat('marmite', 'alex')
       var result = myCat.getDescription()
       var lines = result.split('\n')    //splits the string into new line and truns into elements of an array
-      expect(lines[4]).to.equal('marmite is awake.')
-      //checks if the 4th element shows the correct line
+      expect(lines[5]).to.equal('marmite is awake.')
+      //checks if the 5th element shows the correct line
     })
 
     it('tells you if the cat is asleep', function () {
@@ -94,8 +102,8 @@ describe('AdaCat', function () {
       myCat.nap()
       var result = myCat.getDescription()
       var lines = result.split('\n')    //splits the string into new line and truns into elements of an array
-      expect(lines[4]).to.equal('Shh! mc splinters is sleeping.')
-      //checks if the 4th element shows the correct line
+      expect(lines[5]).to.equal('Shh! mc splinters is sleeping.')
+      //checks if the 5th element shows the correct line
     })
 
 

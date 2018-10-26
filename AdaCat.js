@@ -6,6 +6,7 @@ class AdaCat {
     this.hunger = 5
     this.isSleeping = false
     this.size = 30
+    this.tiredness = 0
   }
 
   setHunger(newHunger) {
@@ -16,6 +17,16 @@ class AdaCat {
       newHunger = 10      //upperbound of hunger is 10
     }
     this.hunger = newHunger
+  }
+
+  setTiredness(newTiredness) {
+    if (newTiredness < 0) {
+      newTiredness = 0
+    }
+    if (newTiredness > 15) {
+      newTiredness = 15
+    }
+    this.tiredness = newTiredness
   }
 
   getDescription() {
@@ -31,6 +42,7 @@ class AdaCat {
 
       'they weigh ' + this.size + ' tonnes.',
       'their health is ' + this.getHealth() + '/30.',
+      'their tiredness is ' + this.tiredness + '/15.',
       sleepLine
     ]
     //displays one element per line with join() method
@@ -41,6 +53,7 @@ class AdaCat {
 
   feed() {      // feed function
     var hunger = this.hunger - 1    //reduces hunger by 1
+    this.setTiredness(this.tiredness++)
 
     if (hunger < 3) {               //size increases if hunger less than 3
       this.size = this.size + 1
@@ -51,6 +64,7 @@ class AdaCat {
 
   nap() {     //nap function
     this.isSleeping = true          //isSleeping set to true if function called
+    this.setTiredness(0)
   }
 
   wakeUp() {  //wakeup function
@@ -59,6 +73,7 @@ class AdaCat {
 
   play() {    //play function
     var hunger = this.hunger + 3    //hunger increases by 3
+    this.setTiredness(this.tiredness + 3)
     if (hunger > 7) {
       this.size = this.size - 1     //size decreases if hunger is greter than 7
     }
