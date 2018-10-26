@@ -17,6 +17,8 @@ class CommandLineApp {
   }
 
   setup() {
+    //assigns input after prompt to a new variable
+    //also displays what you have typed
     var owner = readlineSync.question('What is your name? ')
     var name = readlineSync.question('What would you like to name your cat? ')
 
@@ -24,6 +26,9 @@ class CommandLineApp {
   }
 
   runCommand() {
+    //assigns input after prompt to a new variable
+    //displays numbers for you to select option
+    //doesnt display what you type
     var commandIndex = readlineSync.keyInSelect(
       ['Feed cat', 'Play with cat', 'Tell cat to nap', 'Wake up cat'],
       'What would you like to do?'

@@ -1,5 +1,6 @@
 class AdaCat {
-  constructor(name, owner) {
+  constructor(name, owner) {    //object created by inputing name and owner
+    //initialising attributes
     this.name = name
     this.owner = owner
     this.hunger = 5
@@ -9,10 +10,10 @@ class AdaCat {
 
   setHunger(newHunger) {
     if (newHunger < 0) {
-      newHunger = 0
+      newHunger = 0       //lowerbound of hunger is 0
     }
     if (newHunger > 10) {
-      newHunger = 10
+      newHunger = 10      //upperbound of hunger is 10
     }
     this.hunger = newHunger
   }
@@ -24,7 +25,7 @@ class AdaCat {
     } else {
       sleepLine = this.name + ' is awake.'
     }
-    var lines = [
+    var lines = [     //place the required text in an array (to be returned later)
       this.name + ' is a cat. they belong to ' + this.owner + '.',
       'their hunger level is ' + this.hunger + '/10.',
 
@@ -32,37 +33,39 @@ class AdaCat {
       'their health is ' + this.getHealth() + '/30.',
       sleepLine
     ]
-
+    //displays one element per line with join() method
+    //the new line character ("\n") is inserted between each array element
     return lines.join('\n')
+    //return type is string
   }
 
-  feed() {
-    var hunger = this.hunger - 1
+  feed() {      // feed function
+    var hunger = this.hunger - 1    //reduces hunger by 1
 
-    if (hunger < 3) {
+    if (hunger < 3) {               //size increases if hunger less than 3
       this.size = this.size + 1
     }
 
-    this.setHunger(hunger)
+    this.setHunger(hunger)          //updates hunger information
   }
 
-  nap() {
-    this.isSleeping = true
+  nap() {     //nap function
+    this.isSleeping = true          //isSleeping set to true if function called
   }
 
-  wakeUp() {
-    this.isSleeping = false
+  wakeUp() {  //wakeup function
+    this.isSleeping = false         //isSleeping set to false if function called
   }
 
-  play() {
-    var hunger = this.hunger + 3
+  play() {    //play function
+    var hunger = this.hunger + 3    //hunger increases by 3
     if (hunger > 7) {
-      this.size = this.size - 1
+      this.size = this.size - 1     //size decreases if hunger is greter than 7
     }
-    this.setHunger(hunger)
+    this.setHunger(hunger)          //updates hunger information
   }
 
-  getHealth() {
+  getHealth() {   //health function
     // the ideal weight for cats is 30
     // this futher they are from this, the less
     // healthy they are
@@ -71,16 +74,16 @@ class AdaCat {
     // sizeScore starts at thirty, and gets
     // smaller as the cat's size gets further
     // from the ideal weight
-    var sizeScore = 30 - sizeDifferenceFromIdeal
+    var sizeScore = 30 - sizeDifferenceFromIdeal      //calculates size score
 
     // health score gets lower as the cat gets
-    // more hungry
-    var healthScore = sizeScore - this.hunger
+    // more hungry  
+    var healthScore = sizeScore - this.hunger         //calculates health
 
     // max returns the biggest value, so health
     // will never go below 0
     if (healthScore < 0) {
-      healthScore = 0
+      healthScore = 0     //lowerbound of health is 0
     }
 
     return healthScore
